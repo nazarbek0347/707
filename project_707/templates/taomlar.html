@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static './707.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>707</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <img src="{% static 'images/image.png'%}" class="logo">
+        <ul>
+            <li><a href="{%url 'taomlarPage'%}">Taomlar</a></li>
+            <li><a href="{%url 'ichimliklarPage'%}">Ichimliklar</a></li>
+            <li><a href="">Buyurtma</a></li>
+        </ul>
+        </nav>
+        <section class="blog_section layout_padding">
+      <div class="container22">
+          <div class="heading_container">
+              <h2>
+                  Taomlar ro'yxati
+              </h2>
+          </div>
+          <div class="row">
+              {% for taom in taomlar %}
+              <div class="col-md-6 col-lg-4">
+                  <div class="box">
+                      <div class="img-box">
+                          <img src="{{ taom.taom_rasmi.url }}" alt="{{ taom.taom_nomi }}">
+                      </div>
+                      <div class="detail-box">
+                          <h5>
+                              {{ taom.taom_nomi }}
+                          </h5>
+                          <h3>{{taom.taom_narxi}} So'm</h3>
+                          <div class="quantity-cart">
+                            <input type="number" name="quantity" min="0" value="1" placeholder="Nechta?" class="quantity-input">
+                            <a href="" class="add-to-cart-btn">
+                                Add to card
+                            </a>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+          </div>
+      </div>
+  </section>
+</div>
+</body>
+</html>
